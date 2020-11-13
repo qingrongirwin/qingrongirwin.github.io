@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/facicon.png">
+  <link rel="icon" type="image/png" href="/img/facicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="irwinwu">
+  <meta name="keywords" content="">
+  <title>irwinwu</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>irwinwu</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/back2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/06/07/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" target="_self">
+          <img src="/img/PM.jpg" srcset="/img/loading.gif" alt="产品经理成长之路01">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a class="index-header" href="/2020/06/07/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/">产品经理成长之路01</a>
+
+      <a href="/2020/06/07/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" class="index-excerpt">
+        
+        
+          
+        
+        <div>产品经理成长之路01用产品画布思考问题
+
+什么是产品的生命周期？从进入市场一直到退出市场为止所经历的整个过程，这个过程会因为产品的不同阶段，有不同的表现
+
+
+
+如何判别我的产品属于哪个周期？
+首先，看活跃用户量趋势，平稳、向上拉升还是往下掉？
+其次看时间段 ，一般18个月后，产品都会进入成长期
+
+提醒：看活跃用户量时，尽可能分离外部推广带来的“增肥效应”
+
+
+当你不是产品的资深用户怎么办？如果你不</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-06-07
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/">产品经理</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%88%90%E9%95%BF/">产品经理成长</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/12/30/eos%E8%8A%82%E7%82%B9%E8%AF%BB%E5%8F%96%E8%A7%A3%E6%9E%90/">eos节点读取解析</a>
+
+      <a href="/2019/12/30/eos%E8%8A%82%E7%82%B9%E8%AF%BB%E5%8F%96%E8%A7%A3%E6%9E%90/" class="index-excerpt">
+        
+        
+          
+        
+        <div>#coding=utf-8
+import xlrd
+import requests
+import io
+import sys
+import json
+import re
+import xlwt  # 导入模块
+
+url_list=[]  #存储拼接后的网址
+data=[]     #存储解析后的json数据
+ip_all=[]       #存储ip
+
+wb = xlwt.Workbook(enc</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-12-30
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python%E8%84%9A%E6%9C%AC/">python脚本</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python%E8%84%9A%E6%9C%AC/">python脚本</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/12/30/alexa%E6%A6%9C%E5%8D%95%E7%88%AC%E5%8F%96/">alexa榜单爬取</a>
+
+      <a href="/2019/12/30/alexa%E6%A6%9C%E5%8D%95%E7%88%AC%E5%8F%96/" class="index-excerpt">
+        
+        
+          
+        
+        <div>爬取alexa网址榜单
+#coding=gbk
+from urllib.request import Request, urlopen,ProxyHandler,build_opener
+import sys
+import io
+import re
+import time
+import os
+import re
+import xlrd
+#import xlutils.copy
+import xlr</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-12-30
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python%E8%84%9A%E6%9C%AC/">python脚本</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python%E8%84%9A%E6%9C%AC/">python脚本</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/12/30/ipv6%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90/">ipv6地址解析</a>
+
+      <a href="/2019/12/30/ipv6%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90/" class="index-excerpt">
+        
+        
+          
+        
+        <div>传入域名，通过nslookup命令解析出ipv6地址
+#coding=utf-8
+import os
+import re
+import xlwt
+import xlrd
+
+#定义列表保存域名
+list_url=[]
+
+
+#读取ecxcel
+def read_excel(filename):
+
+    data=xlrd.open_workbook(filename)           #打开ex</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-12-30
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python%E8%84%9A%E6%9C%AC/">python脚本</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python%E8%84%9A%E6%9C%AC/">python脚本</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/12/30/%E8%A7%A3%E6%9E%90ip%E5%9C%B0%E5%9D%80/">解析ip地址</a>
+
+      <a href="/2019/12/30/%E8%A7%A3%E6%9E%90ip%E5%9C%B0%E5%9D%80/" class="index-excerpt">
+        
+        
+          
+        
+        <div>传入ip地址，然后解析出ip所属的国家、省份、城市，类似于ip138网站的解析
+#coding=utf-8
+import xlrd
+
+ip_list=[]
+
+
+#解析ip地址，传入ip即可
+def get_peer_detail(ip):
+    import subprocess
+    cmd = 'java -jar IPLocJar.jar ' + ip
+    detail = &#12</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-12-30
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python%E8%84%9A%E6%9C%AC/">python脚本</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python%E8%84%9A%E6%9C%AC/">python脚本</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/12/30/%E4%BB%8Eexcel%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">从excel读取数据插入数据库</a>
+
+      <a href="/2019/12/30/%E4%BB%8Eexcel%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93/" class="index-excerpt">
+        
+        
+          
+        
+        <div>从excel中读取每一列数据，然后对应的数据库创建列，写入进去
+#conding=utf-8
+import pymysql
+import xlrd
+import sys
+import io
+#sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
+
+usermessage=&#123;
+    'h</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-12-30
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python%E8%84%9A%E6%9C%AC/">python脚本</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python%E8%84%9A%E6%9C%AC/">python脚本</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/12/09/%E5%89%91%E6%8C%87offer-25%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6/">剑指offer_25复杂链表的复制</a>
+
+      <a href="/2019/12/09/%E5%89%91%E6%8C%87offer-25%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题目描述输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针指向任意一个节点），返回结果为复制后复杂链表的head。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）
+
+解题思路
+
+
+
+# -*- coding:utf-8 -*-
+# class RandomListNode:
+#     def __init__(self, x):
+#  </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-12-09
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/12/08/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a>
+
+      <a href="/2019/12/08/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="index-excerpt">
+        
+        
+          
+        
+        <div>一、linux常用命令
+find 基本语法
+
+find [PATH] [option] [action]
+
+# 与时间有关的参数：
+-mtime n : n为数字，意思为在n天之前的“一天内”被更改过的文件；
+-mtime +n : 列出在n天之前（不含n天本身）被更改过的文件名；
+-mtime -n : 列出在n天之内（含n天本身）被更改过的文件名；
+-newer file : 列出比file还</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-12-08
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">面试准备</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+              <a href="/tags/Mysql/">Mysql</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/12/07/Mysql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">Mysql基本命令</a>
+
+      <a href="/2019/12/07/Mysql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="index-excerpt">
+        
+        
+          
+        
+        <div>一、MySQL基本命令登录数据库
+mysql -u root -p
+
+修改密码
+mysqladmin -u用户名 -p旧密码 password 新密码
+
+
+
+二、MySQL–常用命令1、创建数据库（Create）create database db_name;  -- 创建数据库
+show databases;           -- 显示所有的数据库
+drop database db_name</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-12-07
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">面试准备</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Mysql/">Mysql</a>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">面试准备</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/12/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">计算机网络-网络安全</a>
+
+      <a href="/2019/12/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="index-excerpt">
+        
+        
+          
+        
+        <div>两种攻击
+主动攻击：中断、篡改和伪造信息
+被动攻击：截获
+
+对称加密DES即加密密钥与解密密钥是使用相同的密码体制，使用64位的密钥
+公钥密码体制使用不同的加密密钥和解密密钥
+数字签名的三个功能
+1⃣️报文鉴别
+2⃣️报文的完整性
+3⃣️不可否认
+
+具有保密性的数字签名过程：
+
+
+
+报文鉴别：
+1⃣️密码散列函数
+2⃣️MD5和SHA-1
+
+实体鉴别：口令（验证码）对称密钥分配：KDC密钥分配中心</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-12-06
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">面试准备</a>
+            
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://weibo.com/572200176" target="_blank" rel="nofollow noopener"><span>-有一个男孩叫亦儿-</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/qingrongirwin" target="_blank" rel="nofollow noopener">
+        <span>qingrongirwin</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "世间唯好姑娘与梦想不可辜负&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

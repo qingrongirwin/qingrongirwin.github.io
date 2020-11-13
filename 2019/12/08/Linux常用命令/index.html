@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/facicon.png">
+  <link rel="icon" type="image/png" href="/img/facicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="irwinwu">
+  <meta name="keywords" content="">
+  <title>Linux常用命令 - irwinwu</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>irwinwu</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/back2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2019-12-08 13:58">
+      2019年12月8日 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      10.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      118
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h4 id="一、linux常用命令"><a href="#一、linux常用命令" class="headerlink" title="一、linux常用命令"></a>一、linux常用命令</h4><ol>
+<li><h5 id="find-基本语法"><a href="#find-基本语法" class="headerlink" title="find 基本语法"></a>find 基本语法</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">find [PATH] [option] [action]
+<span class="hljs-meta">
+#</span><span class="bash"> 与时间有关的参数：</span>
+-mtime n : n为数字，意思为在n天之前的“一天内”被更改过的文件；
+-mtime +n : 列出在n天之前（不含n天本身）被更改过的文件名；
+-mtime -n : 列出在n天之内（含n天本身）被更改过的文件名；
+-newer file : 列出比file还要新的文件名
+<span class="hljs-meta">#</span><span class="bash"> 例如：</span>
+find /root -mtime 0 # 在当前目录下查找今天之内有改动的文件
+<span class="hljs-meta">
+#</span><span class="bash"> 与用户或用户组名有关的参数：</span>
+-user name : 列出文件所有者为name的文件
+-group name : 列出文件所属用户组为name的文件
+-uid n : 列出文件所有者为用户ID为n的文件
+-gid n : 列出文件所属用户组为用户组ID为n的文件
+<span class="hljs-meta">#</span><span class="bash"> 例如：</span>
+find /home/hadoop -user hadoop # 在目录/home/hadoop中找出所有者为hadoop的文件
+<span class="hljs-meta">
+#</span><span class="bash"> 与文件权限及名称有关的参数：</span>
+-name filename ：找出文件名为filename的文件
+-size [+-]SIZE ：找出比SIZE还要大（+）或小（-）的文件
+-tpye TYPE ：查找文件的类型为TYPE的文件，TYPE的值主要有：一般文件（f)、设备文件（b、c）、
+             目录（d）、连接文件（l）、socket（s）、FIFO管道文件（p）；
+-perm mode ：查找文件权限刚好等于mode的文件，mode用数字表示，如0755；
+-perm -mode ：查找文件权限必须要全部包括mode权限的文件，mode用数字表示
+-perm +mode ：查找文件权限包含任一mode的权限的文件，mode用数字表示
+<span class="hljs-meta">#</span><span class="bash"> 例如：</span>
+find / -name passwd # 查找文件名为passwd的文件
+find . -perm 0755 # 查找当前目录中文件权限的0755的文件
+find . -size +12k # 查找当前目录中大于12KB的文件，注意c表示byte</code></pre></div>
+
+
+
+<ol start="2">
+<li><h5 id="ls-命令，展示文件夹内内容"><a href="#ls-命令，展示文件夹内内容" class="headerlink" title="ls 命令，展示文件夹内内容"></a>ls 命令，展示文件夹内内容</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">-a ：全部的档案，连同隐藏档( 开头为 . 的档案) 一起列出来～ 
+-A ：全部的档案，连同隐藏档，但不包括 . 与 .. 这两个目录，一起列出来～ 
+-d ：仅列出目录本身，而不是列出目录内的档案数据 
+-f ：直接列出结果，而不进行排序 (ls 预设会以档名排序！) 
+-F ：根据档案、目录等信息，给予附加数据结构，例如： 
+*：代表可执行档； /：代表目录； =：代表 socket 档案； |：代表 FIFO 档案； 
+-h ：将档案容量以人类较易读的方式(例如 GB, KB 等等)列出来； 
+-i ：列出 inode 位置，而非列出档案属性； 
+-l ：长数据串行出，包含档案的属性等等数据； 
+-n ：列出 UID 与 GID 而非使用者与群组的名称 (UID与GID会在账号管理提到！) 
+-r ：将排序结果反向输出，例如：原本档名由小到大，反向则为由大到小； 
+-R ：连同子目录内容一起列出来； 
+-S ：以档案容量大小排序！ 
+-t ：依时间排序 
+--color=never ：不要依据档案特性给予颜色显示； 
+--color=always ：显示颜色 
+--color=auto ：让系统自行依据设定来判断是否给予颜色 
+--full-time ：以完整时间模式 (包含年、月、日、时、分) 输出 
+--time=&#123;atime,ctime&#125; ：输出 access 时间或 改变权限属性时间 (ctime) 
+而非内容变更时间 (modification time)</code></pre></div>
+
+
+
+<ol start="3">
+<li><h5 id="cd-命令："><a href="#cd-命令：" class="headerlink" title="cd 命令："></a>cd 命令：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">cd /root/Docements # 切换到目录/root/Docements
+cd ./path          # 切换到当前目录下的path目录中，“.”表示当前目录  
+cd ../path         # 切换到上层目录中的path目录中，“..”表示上一层目录</code></pre></div>
+
+<ol start="4">
+<li><h5 id="tree命令"><a href="#tree命令" class="headerlink" title="tree命令"></a>tree命令</h5></li>
+<li><p>显示树形的层级目录结构，非原生命令，需要安装tree</p>
+</li>
+<li><h5 id="cp-命令，作用复制："><a href="#cp-命令，作用复制：" class="headerlink" title="cp 命令，作用复制："></a>cp 命令，作用复制：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">-a ：将文件的特性一起复制
+-p ：连同文件的属性一起复制，而非使用默认方式，与-a相似，常用于备份
+-i ：若目标文件已经存在时，在覆盖时会先询问操作的进行
+-r ：递归持续复制，用于目录的复制行为
+-u ：目标文件与源文件有差异时才会复制</code></pre></div>
+
+<ol start="6">
+<li><h5 id="rm命令作用为删除，参数："><a href="#rm命令作用为删除，参数：" class="headerlink" title="rm命令作用为删除，参数："></a>rm命令作用为删除，参数：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">-f ：就是force的意思，忽略不存在的文件，不会出现警告消息
+-i ：互动模式，在删除前会询问用户是否操作
+-r ：递归删除，最常用于目录删除，它是一个非常危险的参数</code></pre></div>
+
+<ol start="7">
+<li><h5 id="mv命令作用为移动文件："><a href="#mv命令作用为移动文件：" class="headerlink" title="mv命令作用为移动文件："></a>mv命令作用为移动文件：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">-f ：force强制的意思，如果目标文件已经存在，不会询问而直接覆盖
+-i ：若目标文件已经存在，就会询问是否覆盖
+-u ：若目标文件已经存在，且比目标文件新，才会更新</code></pre></div>
+
+<ol start="8">
+<li><h5 id="pwd命令"><a href="#pwd命令" class="headerlink" title="pwd命令"></a>pwd命令</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">pwd -P # 显示出实际路径，而非使用连接（link）路径；pwd显示的是连接路径</code></pre></div>
+
+<ol start="9">
+<li><h5 id="tar命令，用于压缩解压："><a href="#tar命令，用于压缩解压：" class="headerlink" title="tar命令，用于压缩解压："></a>tar命令，用于压缩解压：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">-c ：新建打包文件
+-t ：查看打包文件的内容含有哪些文件名
+-x ：解打包或解压缩的功能，可以搭配-C（大写）指定解压的目录，注意-c,-t,-x不能同时出现在同一条命令中
+-j ：通过bzip2的支持进行压缩/解压缩
+-z ：通过gzip的支持进行压缩/解压缩
+-v ：在压缩/解压缩过程中，将正在处理的文件名显示出来
+-f filename ：filename为要处理的文件
+-C dir ：指定压缩/解压缩的目录dirs</code></pre></div>
+
+<p>缩略版</p>
+<div class="hljs"><pre><code class="hljs shell">压缩：tar -jcv -f filename.tar.bz2 要被处理的文件或目录名称
+查询：tar -jtv -f filename.tar.bz2
+解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录</code></pre></div>
+
+<ol start="10">
+<li><h5 id="mkdir命令创建目录："><a href="#mkdir命令创建目录：" class="headerlink" title="mkdir命令创建目录："></a>mkdir命令创建目录：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">mkdir [选项]... 目录... 
+ -m, --mode=模式，设定权限&lt;模式&gt; (类似 chmod)，而不是 rwxrwxrwx 减 umask
+ -p, --parents  可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后,系统将自动建立好那些尚不存在的目录,即一次可以建立多个目录; 
+ -v, --verbose  每次创建新目录都显示信息</code></pre></div>
+
+<ol start="11">
+<li><h5 id="rmdir-命令删除目录："><a href="#rmdir-命令删除目录：" class="headerlink" title="rmdir 命令删除目录："></a>rmdir 命令删除目录：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">rmdir [选项]... 目录...
+-p 递归删除目录dirname，当子目录删除后其父目录为空时，也一同被删除。如果整个路径被删除或者由于某种原因保留部分路径，则系统在标准输出上显示相应的信息。 
+-v --verbose  显示指令执行过程</code></pre></div>
+
+<ol start="12">
+<li><h5 id="gzip-命令压缩文件或文件夹为-gz文件："><a href="#gzip-命令压缩文件或文件夹为-gz文件：" class="headerlink" title="gzip 命令压缩文件或文件夹为 .gz文件："></a>gzip 命令压缩文件或文件夹为 .gz文件：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell"> gzip[参数][文件或者目录]
+-a or --ascii 　使用ASCII文字模式。 
+-c or --stdout or --to-stdout 　把压缩后的文件输出到标准输出设备，不去更动原始文件。 
+-d or --decompress or ----uncompress 　解开压缩文件。 
+-f or --force 　强行压缩文件。不理会文件名称 or 硬连接是否存在以及该文件是否为符号连接。 
+-h or --help 　在线帮助。 
+-l or --list 　列出压缩文件的相关信息。 
+-L or --license 　显示版本与版权信息。 
+-n or --no-name 　压缩文件时，不保存原来的文件名称及时间戳记。 
+-N or --name 　压缩文件时，保存原来的文件名称及时间戳记。 
+-q or --quiet 　不显示警告信息。 
+-r or --recursive 　递归处理，将指定目录下的所有文件及子目录一并处理。 
+-S&lt;压缩字尾字符串&gt; or ----suffix&lt;压缩字尾字符串&gt; 　更改压缩字尾字符串。 
+-t or --test 　测试压缩文件是否正确无误。 
+-v or --verbose 　显示指令执行过程。 
+-V or --version 　显示版本信息。 
+-num 用指定的数字num调整压缩的速度，-1 or --fast表示最快压缩方法（低压缩比），-9 or --best表示最慢压缩方法（高压缩比）。系统缺省值为6。</code></pre></div>
+
+<h4 id="二-进程相关命令："><a href="#二-进程相关命令：" class="headerlink" title="二. 进程相关命令："></a><strong>二. 进程相关命令：</strong></h4><ol start="13">
+<li><h5 id="ps-命令显示运行的进程，"><a href="#ps-命令显示运行的进程，" class="headerlink" title="ps 命令显示运行的进程，"></a>ps 命令显示运行的进程，</h5><p>还会显示进程的一些信息如pid, cpu和内存使用情况等：</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">-A ：所有的进程均显示出来
+-a ：不与terminal有关的所有进程
+-u ：有效用户的相关进程
+-x ：一般与a参数一起使用，可列出较完整的信息
+-l ：较长，较详细地将PID的信息列出</code></pre></div>
+
+<ol start="14">
+<li><h5 id="kill-命令用于终止进程，参数："><a href="#kill-命令用于终止进程，参数：" class="headerlink" title="kill 命令用于终止进程，参数："></a>kill 命令用于终止进程，参数：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">kill -signal PID
+
+1：SIGHUP，启动被终止的进程
+2：SIGINT，相当于输入ctrl+c，中断一个程序的进行
+9：SIGKILL，强制中断一个进程的进行
+15：SIGTERM，以正常的结束进程方式来终止进程
+17：SIGSTOP，相当于输入ctrl+z，暂停一个进程s的进行</code></pre></div>
+
+<ol start="15">
+<li><h5 id="killall-命令和参数："><a href="#killall-命令和参数：" class="headerlink" title="killall 命令和参数："></a>killall 命令和参数：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">skillall [-iIe] [command name]
+
+-i ：交互式的意思，若需要删除时，会询问用户
+-e ：表示后面接的command name要一致，但command name不能超过15个字符
+-I ：命令名称忽略大小写
+<span class="hljs-meta">#</span><span class="bash"> 例如：</span>
+killall -SIGHUP syslogd # 重新启动syslogd</code></pre></div>
+
+<ol start="16">
+<li><h5 id="crontab命令是启动linux定时任务的服务"><a href="#crontab命令是启动linux定时任务的服务" class="headerlink" title="crontab命令是启动linux定时任务的服务"></a>crontab命令是启动linux定时任务的服务</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">service cron start # 启动cronjob
+service cron stop # 停止cronjob
+service cron restart #  重启cronjob
+crontab -e # 编辑cronjob任务</code></pre></div>
+
+<ol start="17">
+<li><h5 id="free-命令"><a href="#free-命令" class="headerlink" title="free 命令"></a>free 命令</h5><p>用于显示Linux系统中空闲的、已用的物理内存及swap内存,及被内核使用的buffer：</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">free [参数]
+-b 　以Byte为单位显示内存使用情况。 
+-k 　以KB为单位显示内存使用情况。 
+-m 　以MB为单位显示内存使用情况。
+-g   以GB为单位显示内存使用情况。 
+-o 　不显示缓冲区调节列。 
+-s&lt;间隔秒数&gt; 　持续观察内存使用状况。 s
+-t 　显示内存总和列。 
+-V 　显示版本信息。</code></pre></div>
+
+<ol start="18">
+<li><h5 id="top-命令是Linux下常用的性能分析工具"><a href="#top-命令是Linux下常用的性能分析工具" class="headerlink" title="top 命令是Linux下常用的性能分析工具"></a>top 命令是Linux下常用的性能分析工具</h5><p>能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器：</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">top [参数]
+-b 批处理
+-c 显示完整的治命令
+-I 忽略失效过程
+-s 保密模式
+-S 累积模式s
+-i&lt;时间&gt; 设置间隔时间
+-u&lt;用户名&gt; 指定用户名
+-p&lt;进程号&gt; 指定进程
+-n&lt;次数&gt; 循环显示的次数</code></pre></div>
+
+<h4 id="三-权限相关命令："><a href="#三-权限相关命令：" class="headerlink" title="三. 权限相关命令："></a><strong>三. 权限相关命令：</strong></h4><ol start="19">
+<li><h5 id="chmod命令："><a href="#chmod命令：" class="headerlink" title="chmod命令："></a>chmod命令：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">chmod [-R] xyz 文件或目录
+-R：进行递归的持续更改，即连同子目录下的所有文件都会更改
+<span class="hljs-meta">#</span><span class="bash">同时，chmod还可以使用u（user）、g（group）、o（other）、a（all）和+（加入）、-（删除）、=（设置）跟rwx搭配来对文件的权限进行更改，编号是各种权限的数字代码，示例：</span>
+chmod 0755 file # 把file的文件权限改变为-rxwr-xr-x
+chmod g+w file # 向file的文件权限中加入用户组可写权限</code></pre></div>
+
+<ol start="20">
+<li><h5 id="chown命令改变文件所有者："><a href="#chown命令改变文件所有者：" class="headerlink" title="chown命令改变文件所有者："></a>chown命令改变文件所有者：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">chown [para]... [owner][:[group]] file...
+  -c 显示更改的部分的信息
+
+　-f 忽略错误信息
+
+　-h 修复符号链接
+
+　-R 处理指定目录以及其子目录下的所有文件
+
+　-v 显示详细的处理信息
+
+　-deference 作用于符号链接的指向，而不是链接文件本身</code></pre></div>
+
+<ol start="21">
+<li><h5 id="chgrp命令，改变文件所属组："><a href="#chgrp命令，改变文件所属组：" class="headerlink" title="chgrp命令，改变文件所属组："></a>chgrp命令，改变文件所属组：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">-c 当发生改变时输出调试信息
+-f 不显示错误信息
+-R 处理指定目录以及其子目录下的所有文件
+-v 运行时显示详细的处理信息
+--dereference 作用于符号链接的指向，而不是符号链接本身
+--no-dereference 作用于符号链接本身</code></pre></div>
+
+<ol start="22">
+<li><h5 id="useradd-命令建立用户账号："><a href="#useradd-命令建立用户账号：" class="headerlink" title="useradd 命令建立用户账号："></a>useradd 命令建立用户账号：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">useradd [-mMnr][-c &lt;备注&gt;][-d &lt;登入目录&gt;][-e &lt;有效期限&gt;][-f &lt;缓冲天数&gt;][-g &lt;群组&gt;][-G &lt;群组&gt;][-s ][-u ][用户帐号] 
+
+    -c #&lt;备注&gt; 　加上备注文字。备注文字会保存在passwd的备注栏位中。　
+　　-d #&lt;登入目录&gt; 　指定用户登入时的启始目录。
+　　-D #　变更预设值．
+　　-e # &lt;有效期限&gt; 　指定帐号的有效期限。
+　　-f # &lt;缓冲天数&gt; 　指定在密码过期后多少天即关闭该帐号。
+　　-g # &lt;群组&gt; 　指定用户所属的群组。
+　　-G # &lt;群组&gt; 　指定用户所属的附加群组。
+　　-m # 自动建立用户的登入目录。
+　　-M # 不要自动建立用户的登入目录。
+　　-n # 取消建立以用户名称为名的群组．
+　　-r # 建立系统帐号。
+　　-s # 指定用户登入后所使用的shell。
+　　-u # 指定用户ID。</code></pre></div>
+
+<ol start="23">
+<li><h5 id="usermod-修改用户信息："><a href="#usermod-修改用户信息：" class="headerlink" title="usermod 修改用户信息："></a>usermod 修改用户信息：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">usermod -h
+usermod [options] LOGIN
+ -c #后面接账号的说明，即/etc/passwd第五栏的说明栏，可以加入一些账号的说明
+ -d #后面接账号的家目录，即修改/etc/passwd的第六栏
+ -e #后面接日期，格式是YYYY-MM-DD也就是在/etc/shadow内的第八栏
+ -f #后面接天数，修改shadow的第七栏
+ -g #后面接主群组，修改/etc/passwd的第四个字段，即是GID的字段
+ -G #后面接附加群组，修改这个使用者能够支持的群组，修改的是/etc/group
+ -a #与 -G 合用，可增加附加群组的支持而非设定
+ -l #后面接账号名称。修改账号名称，/etc/passwd的第一栏
+ -s #后面接Shell的文件，例如/bin/bash或/bin/csh等等
+ -u #后面接 UID 数字，修改用户的UID /etc/passwd第三栏
+ -L #暂时将用户的密码冻结，让他无法登入。其实就是在/etc/shadow的密码栏前面加上了“!”
+ -U #将/etc/shadow 密码栏的“!”去掉</code></pre></div>
+
+<ol start="24">
+<li><h5 id="userdel-删除用户："><a href="#userdel-删除用户：" class="headerlink" title="userdel 删除用户："></a>userdel 删除用户：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">userdel [options] LOGIN
+-f # 强制删除，包括用户的一切相关内容，这个参数是危险的参数，不建议大家使用。详细说明看MAN
+-r # 删除用户的家目录和用户的邮件池</code></pre></div>
+
+<ol start="25">
+<li><h5 id="groupadd-命令用于将新组加入系统："><a href="#groupadd-命令用于将新组加入系统：" class="headerlink" title="groupadd　命令用于将新组加入系统："></a>groupadd　命令用于将新组加入系统：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">groupadd [－g gid] [－o]] [－r] [－f] groupname
+
+－g gid：指定组ID号。
+－o：允许组ID号，不必惟一。
+－r：加入组ID号，低于499系统账号。
+－f：加入已经有的组时，发展程序退出。</code></pre></div>
+
+<ol start="26">
+<li><h5 id="groupdel-命令删除组："><a href="#groupdel-命令删除组：" class="headerlink" title="groupdel　命令删除组："></a>groupdel　命令删除组：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">＃　用于删除不再需要的组，如果指定的组中包含用户，则必须先删除组里面的用户&gt;以后，才能删除组
+groupdel [options] GROUP</code></pre></div>
+
+<ol start="27">
+<li><h5 id="sudo-用来以其他身份来执行命令，预设的身份为root"><a href="#sudo-用来以其他身份来执行命令，预设的身份为root" class="headerlink" title="sudo 用来以其他身份来执行命令，预设的身份为root:"></a>sudo 用来以其他身份来执行命令，预设的身份为root:</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">sudo(选项)(参数)
+
+-b：在后台执行指令；
+-h：显示帮助；
+-H：将HOME环境变量设为新身份的HOME环境变量；
+-k：结束密码的有效期限，也就是下次再执行sudo时便需要输入密码；。
+-l：列出目前用户可执行与无法执行的指令；
+-p：改变询问密码的提示符号；
+-s：执行指定的shell；
+-u&lt;用户&gt;：以指定的用户作为新的身份。若不加上此参数，则预设以root作为新的身份；
+-v：延长密码有效期限5分钟；
+-V ：显示版本信息。</code></pre></div>
+
+<ol start="28">
+<li><h5 id="passwd-设置用户的密码："><a href="#passwd-设置用户的密码：" class="headerlink" title="passwd 设置用户的密码："></a>passwd 设置用户的密码：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">passwd [OPTION...] &lt;accountName&gt;
+-k, --keep-tokens       keep non-expired authentication tokens
+-d, --delete            delete the password for the named account (root only)
+-l, --lock              lock the named account (root only)
+-u, --unlock            unlock the named account (root only)
+-f, --force             force operation
+-x, --maximum=DAYS      maximum password lifetime (root only)
+-n, --minimum=DAYS      minimum password lifetime (root only)
+-w, --warning=DAYS      number of days warning users receives before password expiration (root only)
+-i, --inactive=DAYS     number of days after password expiration when an account becomes disabled (root only)
+-S, --status            report password status on the named account (root)</code></pre></div>
+
+<ol start="29">
+<li><h5 id="groups-显示用户所属组："><a href="#groups-显示用户所属组：" class="headerlink" title="groups 显示用户所属组："></a>groups 显示用户所属组：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">groups # 默认显示当前用户的组
+
+groups hadoop2 # 显示hadoop2用户的组</code></pre></div>
+
+<h4 id="四-文本查看编辑等命令"><a href="#四-文本查看编辑等命令" class="headerlink" title="四. 文本查看编辑等命令"></a><strong>四. 文本查看编辑等命令</strong></h4><ol start="30">
+<li><h5 id="vi-vim-是使用vi编辑器的命令："><a href="#vi-vim-是使用vi编辑器的命令：" class="headerlink" title="vi/vim 是使用vi编辑器的命令："></a>vi/vim 是使用vi编辑器的命令：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">vi /var/log/aa.log # 打开 /var/log/aa.log文件并编辑</code></pre></div>
+
+<ol start="31">
+<li><h5 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h5><p>用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。 </p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell"> cat [选项] [文件]...
+-A, --show-all           等价于 -vET
+-b, --number-nonblank    对非空输出行编号
+-e                       等价于 -vE
+-E, --show-ends          在每行结束处显示 $
+-n, --number     对输出的所有行编号,由1开始对所有输出的行数编号
+-s, --squeeze-blank  有连续两行以上的空白行，就代换为一行的空白行 
+-t                       与 -vT 等价
+-T, --show-tabs          将跳格字符显示为 ^I
+-u                       (被忽略)
+-v, --show-nonprinting   使用 ^ 和 M- 引用，除了 LFD 和 TAB 之外</code></pre></div>
+
+<ol start="32">
+<li><h5 id="more-命令"><a href="#more-命令" class="headerlink" title="more 命令"></a>more 命令</h5><p>和cat的功能一样都是查看文件里的内容，但有所不同的是more可以按页来查看文件的内容，还支持直接跳转行等功能：</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">more [-dlfpcsu ] [-num ] [+/ pattern] [+ linenum] [file ... ] 
+命令参数：
++n 从笫n行开始显示
+-n 定义屏幕大小为n行
++/pattern 在每个档案显示前搜寻该字串（pattern），然后从该字串前两行之后开始显示 
+-c 从顶部清屏，然后显示
+-d 提示“Press space to continue，’q’ to quit（按空格键继续，按q键退出）”，禁用响铃功能
+-l 忽略Ctrl+l（换页）字符
+-p 通过清除窗口而不是滚屏来对文件进行换页，与-c选项相似
+-s 把连续的多个空行显示为一行
+-u 把文件内容中的下画线去掉
+常用操作命令：
+Enter 向下n行，需要定义。默认为1行
+Ctrl+F 向下滚动一屏
+空格键 向下滚动一屏
+Ctrl+B 返回上一屏
+= 输出当前行的行号
+：f 输出文件名和当前行的行号
+V 调用vi编辑器
+!命令 调用Shell，并执行命令 
+q 退出more</code></pre></div>
+
+<ol start="33">
+<li><h5 id="less命令"><a href="#less命令" class="headerlink" title="less命令"></a>less命令</h5><p>用法比起 more 更加的有弹性。在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多的搜索功能，不止可以向下搜，也可以向上搜。</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell"> less [参数]  文件 
+-b &lt;缓冲区大小&gt; 设置缓冲区的大小
+-e 当文件显示结束后，自动离开
+-f 强迫打开特殊文件，例如外围设备代号、目录和二进制文件
+-g 只标志最后搜索的关键词
+-i 忽略搜索时的大小写
+-m 显示类似more命令的百分比
+-N 显示每行的行号
+-o &lt;文件名&gt; 将less 输出的内容在指定文件中保存起来
+-Q 不使用警告音
+-s 显示连续空行为一行
+-S 行过长时间将超出部分舍弃
+-x &lt;数字&gt; 将“tab”键显示为规定的数字空格
+/字符串：向下搜索“字符串”的功能
+?字符串：向上搜索“字符串”的功能
+n：重复前一个搜索（与 / 或 ? 有关）
+N：反向重复前一个搜索（与 / 或 ? 有关）
+b 向后翻一页
+d 向后翻半页
+h 显示帮助界面
+Q 退出less 命令
+u 向前滚动半页
+y 向前滚动一行
+空格键 滚动一行
+回车键 滚动一页
+[pagedown]： 向下翻动一页
+[pageup]： 向上翻动一页</code></pre></div>
+
+<ol start="34">
+<li><h5 id="tail-命令"><a href="#tail-命令" class="headerlink" title="tail 命令"></a>tail 命令</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容. </span>
+tail[必要参数][选择参数][文件]   
+
+-f 循环读取
+-q 不显示处理信息
+-v 显示详细的处理信息
+-c&lt;数目&gt; 显示的字节数
+-n&lt;行数&gt; 显示行数
+--pid=PID 与-f合用,表示在进程ID,PID死掉之后结束. 
+-q, --quiet, --silent 从不输出给出文件名的首部 
+-s, --sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒</code></pre></div>
+
+<ol start="35">
+<li><h5 id="head-命令"><a href="#head-命令" class="headerlink" title="head 命令"></a>head 命令</h5><p>用于显示档案的开头至标准输出中，默认head命令打印其相应文件的开头10行：</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">head [参数]... [文件]...  
+-q 隐藏文件名
+-v 显示文件名
+-c&lt;字节&gt; 显示字节数
+-n&lt;行数&gt; 显示的行数</code></pre></div>
+
+<ol start="36">
+<li><h5 id="diff-命令"><a href="#diff-命令" class="headerlink" title="diff 命令"></a>diff 命令</h5><p>用于比较两个文件或目录的不同：</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell"> diff[参数][文件1或目录1][文件2或目录2]
+<span class="hljs-meta">
+#</span><span class="bash"> diff命令能比较单个文件或者目录内容。如果指定比较的是文件，则只有当输入为文本文件时才有效。以逐行的方式，比较文本文件的异同处。如果指定比较的是目录的的时候，diff 命令会比较两个目录下名字相同的</span>
+<span class="hljs-meta">#</span><span class="bash"> 文本文件。列出不同的二进制文件、公共子目录和只在一个目录出现的文件。</span>
+
+-a or --text 　#diff预设只会逐行比较文本文件。
+-b or --ignore-space-change 　#不检查空格字符的不同。
+-B or --ignore-blank-lines 　#不检查空白行。
+-c 　#显示全部内文，并标出不同之处。
+-C or --context 　#与执行"-c-"指令相同。
+-d or --minimal 　#使用不同的演算法，以较小的单位来做比较。
+-D or ifdef 　#此参数的输出格式可用于前置处理器巨集。
+-e or --ed 　#此参数的输出格式可用于ed的script文件。
+-f or -forward-ed 　#输出的格式类似ed的script文件，但按照原来文件的顺序来显示不同处。
+-H or --speed-large-files 　#比较大文件时，可加快速度。
+-l or --ignore-matching-lines 　#若两个文件在某几行有所不同，而这几行同时都包含了选项中指定的字符 or 字符串，则不显示这两个文件的差异。
+-i or --ignore-case 　#不检查大小写的不同。
+-l or --paginate 　#将结果交由pr程序来分页。
+-n or --rcs 　#将比较结果以RCS的格式来显示。
+-N or --new-file 　#在比较目录时，若文件A仅出现在某个目录中，预设会显示：Only in目录：文件A若使用-N参数，则diff会将文件A与一个空白的文件比较。
+-p 　#若比较的文件为C语言的程序码文件时，显示差异所在的函数名称。
+-P or --unidirectional-new-file 　#与-N类似，但只有当第二个目录包含了一个第一个目录所没有的文件时，才会将这个文件与空白的文件做比较。
+-q or --brief 　#仅显示有无差异，不显示详细的信息。
+-r or --recursive 　#比较子目录中的文件。
+-s or --report-identical-files 　#若没有发现任何差异，仍然显示信息。
+-S or --starting-file 　#在比较目录时，从指定的文件开始比较。
+-t or --expand-tabs 　#在输出时，将tab字符展开。
+-T or --initial-tab 　#在每行前面加上tab字符以便对齐。
+-u,-U or --unified= 　#以合并的方式来显示文件内容的不同。
+-v or --version 　#显示版本信息。
+-w or --ignore-all-space 　#忽略全部的空格字符。
+-W or --width 　#在使用-y参数时，指定栏宽。s
+-x or --exclude 　#不比较选项中所指定的文件 or 目录。
+-X or --exclude-from 　#您可以将文件 or 目录类型存成文本文件，然后在=中指定此文本文件。
+-y or --side-by-side 　#以并列的方式显示文件的异同之处。</code></pre></div>
+
+<h4 id="五、网络相关命令："><a href="#五、网络相关命令：" class="headerlink" title="五、网络相关命令："></a><strong>五、网络相关命令：</strong></h4><ol start="37">
+<li><h5 id="ping-用于确定主机与外部连接状态："><a href="#ping-用于确定主机与外部连接状态：" class="headerlink" title="ping 用于确定主机与外部连接状态："></a>ping 用于确定主机与外部连接状态：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">ping [参数] [主机名或IP地址]
+-d 使用Socket的SO_DEBUG功能。
+-f  极限检测。大量且快速地送网络封包给一台机器，看它的回应。
+-n 只输出数值。
+-q 不显示任何传送封包的信息，只显示最后的结果。
+-r 忽略普通的Routing Table，直接将数据包送到远端主机上。通常是查看本机的网络接口是否有问题。
+-R 记录路由过程。
+-v 详细显示指令的执行过程。
+&lt;p&gt;-c 数目：在发送指定数目的包后停止。
+-i 秒数：设定间隔几秒送一个网络封包给一台机器，预设值是一秒送一次。
+-I 网络界面：使用指定的网络界面送出数据包。
+-l 前置载入：设置在送出要求信息之前，先行发出的数据包。
+-p 范本样式：设置填满数据包的范本样式。
+-s 字节数：指定发送的数据字节数，预设值是56，加上8字节的ICMP头，一共是64ICMP数据字节。
+-t 存活数值：设置存活数值TTL的大小。</code></pre></div>
+
+<ol start="38">
+<li><h5 id="ssh-命令用于远程登录上Linux主机："><a href="#ssh-命令用于远程登录上Linux主机：" class="headerlink" title="ssh 命令用于远程登录上Linux主机："></a>ssh 命令用于远程登录上Linux主机：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">ssh [-l login_name] [-p port] [user@]hostname</code></pre></div>
+
+<ol start="39">
+<li><h5 id="scp-命令"><a href="#scp-命令" class="headerlink" title="scp 命令"></a>scp 命令</h5><p>是secure copy的简写，用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的：</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">scp [参数] [原路径] [目标路径]
+
+-1 强制scp命令使用协议ssh1 
+-2 强制scp命令使用协议ssh2 
+-4 强制scp命令只使用IPv4寻址 
+-6 强制scp命令只使用IPv6寻址 
+-B 使用批处理模式（传输过程中不询问传输口令或短语） 
+-C 允许压缩。（将-C标志传递给ssh，从而打开压缩功能） 
+-p 保留原文件的修改时间，访问时间和访问权限。 
+-q 不显示传输进度条。 
+-r 递归复制整个目录。 
+-v 详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。 
+-c cipher 以cipher将数据传输进行加密，这个选项将直接传递给ssh。 
+-F ssh_config 指定一个替代的ssh配置文件，此参数直接传递给ssh。 
+-i identity_file 从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。 
+-l limit 限定用户所能使用的带宽，以Kbit/s为单位。 
+-o ssh_option 如果习惯于使用ssh_config(5)中的参数传递方式， 
+-P port 注意是大写的P, port是指定数据传输用到的端口号 
+-S program 指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。</code></pre></div>
+
+<ol start="40">
+<li><h5 id="telnet-命令用来远程登录操作："><a href="#telnet-命令用来远程登录操作：" class="headerlink" title="telnet 命令用来远程登录操作："></a>telnet 命令用来远程登录操作：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell"> telnet[参数][主机]
+
+-8 允许使用8位字符资料，包括输入与输出。
+-a 尝试自动登入远端系统。
+-b&lt;主机别名&gt; 使用别名指定远端主机名称。
+-c 不读取用户专属目录里的.telnetrc文件。
+-d 启动排错模式。
+-e&lt;脱离字符&gt; 设置脱离字符。
+-E 滤除脱离字符。
+-f 此参数的效果和指定"-F"参数相同。
+-F 使用Kerberos V5认证时，加上此参数可把本地主机的认证数据上传到远端主机。
+-k&lt;域名&gt; 使用Kerberos认证时，加上此参数让远端主机采用指定的领域名，而非该主机的域名。
+-K 不自动登入远端主机。
+-l&lt;用户名称&gt; 指定要登入远端主机的用户名称。
+-L 允许输出8位字符资料。
+-n&lt;记录文件&gt; 指定文件记录相关信息。
+-r 使用类似rlogin指令的用户界面。
+-S&lt;服务类型&gt; 设置telnet连线所需的IP TOS信息。
+-x 假设主机有支持数据加密的功能，就使用它。
+-X&lt;认证形态&gt; 关闭指定的认证形态。</code></pre></div>
+
+<ol start="41">
+<li><h5 id="wget-是从远程下载的工具："><a href="#wget-是从远程下载的工具：" class="headerlink" title="wget 是从远程下载的工具："></a>wget 是从远程下载的工具：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">wget [参数] [URL地址]
+
+启动参数：
+-V, –version 显示wget的版本后退出
+-h, –help 打印语法帮助
+-b, –background 启动后转入后台执行
+-e, –execute=COMMAND 执行`.wgetrc’格式的命令，wgetrc格式参见/etc/wgetrc或~/.wgetrc
+
+记录和输入文件参数：
+-o, –output-file=FILE 把记录写到FILE文件中
+-a, –append-output=FILE 把记录追加到FILE文件中
+-d, –debug 打印调试输出
+-q, –quiet 安静模式(没有输出)
+-v, –verbose 冗长模式(这是缺省设置)
+-nv, –non-verbose 关掉冗长模式，但不是安静模式
+-i, –input-file=FILE 下载在FILE文件中出现的URLs
+-F, –force-html 把输入文件当作HTML格式文件对待
+-B, –base=URL 将URL作为在-F -i参数指定的文件中出现的相对链接的前缀
+–sslcertfile=FILE 可选客户端证书
+–sslcertkey=KEYFILE 可选客户端证书的KEYFILE
+–egd-file=FILE 指定EGD socket的文件名
+
+下载参数：
+–bind-address=ADDRESS 指定本地使用地址(主机名或IP，当本地有多个IP或名字时使用)
+-t, –tries=NUMBER 设定最大尝试链接次数(0 表示无限制).
+-O –output-document=FILE 把文档写到FILE文件中
+-nc, –no-clobber 不要覆盖存在的文件或使用.#前缀
+-c, –continue 接着下载没下载完的文件
+–progress=TYPE 设定进程条标记
+-N, –timestamping 不要重新下载文件除非比本地文件新
+-S, –server-response 打印服务器的回应
+–spider 不下载任何东西
+-T, –timeout=SECONDS 设定响应超时的秒数
+-w, –wait=SECONDS 两次尝试之间间隔SECONDS秒
+–waitretry=SECONDS 在重新链接之间等待1…SECONDS秒
+–random-wait 在下载之间等待0…2*WAIT秒
+-Y, –proxy=on/off 打开或关闭代理
+-Q, –quota=NUMBER 设置下载的容量限制
+–limit-rate=RATE 限定下载输率
+
+目录参数：
+-nd –no-directories 不创建目录
+-x, –force-directories 强制创建目录
+-nH, –no-host-directories 不创建主机目录
+-P, –directory-prefix=PREFIX 将文件保存到目录 PREFIX/…
+–cut-dirs=NUMBER 忽略 NUMBER层远程目录
+
+HTTP 选项参数：
+–http-user=USER 设定HTTP用户名为 USER.
+–http-passwd=PASS 设定http密码为 PASS
+-C, –cache=on/off 允许/不允许服务器端的数据缓存 (一般情况下允许)
+-E, –html-extension 将所有text/html文档以.html扩展名保存
+–ignore-length 忽略 `Content-Length’头域
+–header=STRING 在headers中插入字符串 STRING
+–proxy-user=USER 设定代理的用户名为 USER
+–proxy-passwd=PASS 设定代理的密码为 PASS
+–referer=URL 在HTTP请求中包含 `Referer: URL’头
+-s, –save-headers 保存HTTP头到文件
+-U, –user-agent=AGENT 设定代理的名称为 AGENT而不是 Wget/VERSION
+–no-http-keep-alive 关闭 HTTP活动链接 (永远链接)
+–cookies=off 不使用 cookies
+–load-cookies=FILE 在开始会话前从文件 FILE中加载cookie
+–save-cookies=FILE 在会话结束后将 cookies保存到 FILE文件中
+
+FTP 选项参数：
+-nr, –dont-remove-listing 不移走 `.listing’文件
+-g, –glob=on/off 打开或关闭文件名的 globbing机制
+–passive-ftp 使用被动传输模式 (缺省值).
+–active-ftp 使用主动传输模式
+–retr-symlinks 在递归的时候，将链接指向文件(而不是目录)
+
+递归下载参数：
+-r, –recursive 递归下载－－慎用!
+-l, –level=NUMBER 最大递归深度 (inf 或 0 代表无穷)
+–delete-after 在现在完毕后局部删除文件
+-k, –convert-links 转换非相对链接为相对链接
+-K, –backup-converted 在转换文件X之前，将之备份为 X.orig
+-m, –mirror 等价于 -r -N -l inf -nr
+-p, –page-requisites 下载显示HTML文件的所有图片
+
+递归下载中的包含和不包含(accept/reject)：
+-A, –accept=LIST 分号分隔的被接受扩展名的列表
+-R, –reject=LIST 分号分隔的不被接受的扩展名的列表
+-D, –domains=LIST 分号分隔的被接受域的列表
+–exclude-domains=LIST 分号分隔的不被接受的域的列表
+–follow-ftp 跟踪HTML文档中的FTP链接
+–follow-tags=LIST 分号分隔的被跟踪的HTML标签的列表
+-G, –ignore-tags=LIST 分号分隔的被忽略的HTML标签的列表
+-H, –span-hosts 当递归时转到外部主机
+-L, –relative 仅仅跟踪相对链接
+-I, –include-directories=LIST 允许目录的列表
+-X, –exclude-directories=LIST 不被包含目录的列表
+-np, –no-parent 不要追溯到父目录
+wget -S –spider url 不下载只显示过程</code></pre></div>
+
+<ol start="42">
+<li><h5 id="ifconfig命令"><a href="#ifconfig命令" class="headerlink" title="ifconfig命令"></a>ifconfig命令</h5><p>用来查看和配置网络设备。当网络环境发生改变时可通过此命令对网络进行相应的配置：</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell"> ifconfig [网络设备] [参数]
+
+up 启动指定网络设备/网卡。
+down 关闭指定网络设备/网卡。该参数可以有效地阻止通过指定接口的IP信息流，如果想永久地关闭一个接口，我们还需要从核心路由表中将该接口的路由信息全部删除。
+arp 设置指定网卡是否支持ARP协议。
+-promisc 设置是否支持网卡的promiscuous模式，如果选择此参数，网卡将接收网络中发给它所有的数据包
+-allmulti 设置是否支持多播模式，如果选择此参数，网卡将接收网络中所有的多播数据包
+-a 显示全部接口信息
+-s 显示摘要信息（类似于 netstat -i）
+add 给指定网卡配置IPv6地址
+del 删除指定网卡的IPv6地址
+&lt;硬件地址&gt; 配置网卡最大的传输单元
+mtu&lt;字节数&gt; 设置网卡的最大传输单元 (bytes)
+netmask&lt;子网掩码&gt; 设置网卡的子网掩码。掩码可以是有前缀0x的32位十六进制数，也可以是用点分开的4个十进制数。如果不打算将网络分成子网，可以不管这一选项；如果要使用子网，那么请记住，网络中每一个系统必须有相同子网掩码。
+tunel 建立隧道
+dstaddr 设定一个远端地址，建立点对点通信
+-broadcast&lt;地址&gt; 为指定网卡设置广播协议
+-pointtopoint&lt;地址&gt; 为网卡设置点对点通讯协议
+multicast 为网卡设置组播标志
+address 为网卡设置IPv4地址
+txqueuelen&lt;长度&gt; 为网卡设置传输列队的长度</code></pre></div>
+
+<ol start="43">
+<li><h5 id="route命令"><a href="#route命令" class="headerlink" title="route命令"></a>route命令</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell"> route [-f] [-p] [Command [Destination] [mask Netmask] [Gateway] [metric Metric]] [if Interface]] 
+-c  # 显示更多信息
+-n  # 不解析名字
+-v  # 显示详细的处理信息
+-F  # 显示发送信息
+-C # 显示路由缓存
+-f  # 清除所有网关入口的路由表。 
+-p # 与 add 命令一起使用时使路由具有永久性。</code></pre></div>
+
+<h4 id="六、-搜索文件："><a href="#六、-搜索文件：" class="headerlink" title="六、 搜索文件："></a><strong>六、 搜索文件：</strong></h4><ol start="44">
+<li><h5 id="whereis-命令："><a href="#whereis-命令：" class="headerlink" title="whereis 命令："></a>whereis 命令：</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。和find相比，whereis查找的速度非常快，这是因为linux系统会将 系统内的所有文件都记录在一个数据库文件中，当使用whereis和locate时，会从数据库中查找数据，而不是像find命令那样，通过遍历硬盘来查找，效率自然会很高。 但是该数据库文件并不是实时更新，默认情况下时一星期更新一次，因此，我们在用whereis和locate 查找文件时，有时会找到已经被删除的数据，或者刚刚建立文件，却无法查找到，原因就是因为数据库文件没有被更新。 </span>
+
+ whereis [-bmsu] [BMS 目录名 -f ] 文件名
+ -b 定位可执行文件。
+　-m 定位帮助文件。
+　-s 定位源代码文件。
+　-u 搜索默认路径下除可执行文件、源代码文件、帮助文件以外的其它文件。
+　-B 指定搜索可执行文件的路径。
+　-M 指定搜索帮助文件的路径。
+　-S 指定搜索源代码文件的路径。</code></pre></div>
+
+<ol start="45">
+<li><h5 id="locate命令"><a href="#locate命令" class="headerlink" title="locate命令"></a>locate命令</h5></li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">＃　locate命令可以在搜寻数据库时快速找到档案，数据库由updatedb程序来更新，updatedb是由cron daemon周期性建立的，locate命令在搜寻数据库时比由整个由硬盘资料来搜寻资料来得快，但较差劲的是locate所找到的档案若是最近才建立或 刚更名的，可能会找不到，在内定值中，updatedb每天会跑一次，可以由修改crontab来更新设定值。(etc/crontab)
+
+Locate [选择参数] [样式]
+-e   将排除在寻找的范围之外。
+-1  如果 是 1．则启动安全模式。在安全模式下，使用者不会看到权限无法看到 的档案。这会始速度减慢，因为 locate 必须至实际的档案系统中取得档案的 权限资料。
+-f   将特定的档案系统排除在外，例如我们没有到理要把 proc 档案系统中的档案 放在资料库中。
+-q  安静模式，不会显示任何错误讯息。
+-n 至多显示 n个输出。
+-r 使用正规运算式 做寻找的条件。
+-o 指定资料库存的名称。
+-d 指定资料库的路径
+-h 显示辅助讯息
+-V 显示程式的版本讯息</code></pre></div>
+
+<ol start="46">
+<li><h5 id="which命令"><a href="#which命令" class="headerlink" title="which命令"></a>which命令</h5><p>在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果：</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">which 可执行文件名称 
+-n 　指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。
+-p 　与-n参数相同，但此处的包括了文件的路径。
+-w 　指定输出时栏位的宽度。
+-V 　显示版本信息</code></pre></div>
+
+<p><strong>七、 其他：</strong></p>
+<ol start="47">
+<li><h5 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h5></li>
+</ol>
+<p>该命令常用于分析一行的信息，若当中有我们所需要的信息，就将该行显示出来，该命令通常与管道命令一起使用，用于对一些命令的输出进行筛选加工等等，比如可以加在ps, tail, cat后面</p>
+<p>它的简单语法为</p>
+<div class="hljs"><pre><code class="hljs shell">grep [-acinv] [--color=auto] '查找字符串' filename</code></pre></div>
+
+<ol start="48">
+<li><h5 id="clear-命令"><a href="#clear-命令" class="headerlink" title="clear 命令"></a>clear 命令</h5><p>用于清除终端屏幕上现有的文字内容</p>
+</li>
+<li><h5 id="date-命令"><a href="#date-命令" class="headerlink" title="date 命令"></a>date 命令</h5><p>用于显示或设定时间：</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">date [参数]... [+格式]
+
+必要参数:
+<span class="hljs-meta">%</span><span class="bash">H 小时(以00-23来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">I 小时(以01-12来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">K 小时(以0-23来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">l 小时(以0-12来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">M 分钟(以00-59来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">P AM或PM。 </span>
+<span class="hljs-meta">%</span><span class="bash">r 时间(含时分秒，小时以12小时AM/PM来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">s 总秒数。起算时间为1970-01-01 00:00:00 UTC。 </span>
+<span class="hljs-meta">%</span><span class="bash">S 秒(以本地的惯用法来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">T 时间(含时分秒，小时以24小时制来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">X 时间(以本地的惯用法来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">Z 市区。 </span>
+<span class="hljs-meta">%</span><span class="bash">a 星期的缩写。 </span>
+<span class="hljs-meta">%</span><span class="bash">A 星期的完整名称。 </span>
+<span class="hljs-meta">
+%</span><span class="bash">b 月份英文名的缩写。 </span>
+<span class="hljs-meta">%</span><span class="bash">B 月份的完整英文名称。 </span>
+<span class="hljs-meta">%</span><span class="bash">c 日期与时间。只输入date指令也会显示同样的结果。 </span>
+<span class="hljs-meta">%</span><span class="bash">d 日期(以01-31来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">D 日期(含年月日)。 </span>
+<span class="hljs-meta">%</span><span class="bash">j 该年中的第几天。 </span>
+<span class="hljs-meta">%</span><span class="bash">m 月份(以01-12来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">U 该年中的周数。 </span>
+<span class="hljs-meta">%</span><span class="bash">w 该周的天数，0代表周日，1代表周一，异词类推。 </span>
+<span class="hljs-meta">%</span><span class="bash">x 日期(以本地的惯用法来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">y 年份(以00-99来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">Y 年份(以四位数来表示)。 </span>
+<span class="hljs-meta">%</span><span class="bash">n 在显示时，插入新的一行。 </span>
+<span class="hljs-meta">%</span><span class="bash">t 在显示时，插入tab。 </span>
+MM 月份(必要) 
+DD 日期(必要) 
+hh 小时(必要) 
+mm 分钟(必要)
+ss 秒(选择性) 
+
+选择参数:
+-d&lt;字符串&gt; 　显示字符串所指的日期与时间。字符串前后必须加上双引号。 
+-s&lt;字符串&gt; 　根据字符串来设置日期与时间。字符串前后必须加上双引号。 
+-u 　显示GMT。</code></pre></div>
+
+<ol start="50">
+<li><h5 id="ln-命令"><a href="#ln-命令" class="headerlink" title="ln 命令"></a>ln 命令</h5><p>为某一个文件在另外一个位置建立一个同步的链接</p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs shell">Linux文件系统中，有所谓的链接(link)，我们可以将其视为档案的别名，而链接又可分为两种 : 硬链接(hard link)与软链接(symbolic link)，硬链接的意思是一个档案可以有多个名称，而软链接的方式则是产生一个特殊的档案，该档案的内容是指向另一个档案的位置。硬链接是存在同一个文件系统中，而软链接却可以跨越不同的文件系统。
+
+软链接：
+1.软链接，以路径的形式存在。类似于Windows操作系统中的快捷方式
+2.软链接可以 跨文件系统 ，硬链接不可以
+3.软链接可以对一个不存在的文件名进行链接
+4.软链接可以对目录进行链接
+
+硬链接:
+1.硬链接，以文件副本的形式存在。但不占用实际空间。
+2.不允许给目录创建硬链接
+3.硬链接只有在同一个文件系统中才能创建
+
+ln [参数][源文件或目录][目标文件或目录]
+
+必要参数:
+-b 删除，覆盖以前建立的链接
+-d 允许超级用户制作目录的硬链接
+-f 强制执行
+-i 交互模式，文件存在则提示用户是否覆盖
+-n 把符号链接视为一般目录
+-s 软链接(符号链接)
+-v 显示详细的处理过程
+
+选择参数:
+-S “-S&lt;字尾备份字符串&gt; ”或 “--suffix=&lt;字尾备份字符串&gt;”
+-V “-V&lt;备份方式&gt;”或“--version-control=&lt;备份方式&gt;”</code></pre></div>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">面试准备</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Mysql/">Mysql</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/09/%E5%89%91%E6%8C%87offer-25%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">剑指offer_25复杂链表的复制</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/07/Mysql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
+                        <span class="hidden-mobile">Mysql基本命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "gGNPuwqksNOrbFtmaOTXrDii-gzGzoHsz",
+          app_key: "ec3fw1ASnmtTKB1gvhXbjR27",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    }
+    createObserver(loadValine, 'vcomments');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://weibo.com/572200176" target="_blank" rel="nofollow noopener"><span>-有一个男孩叫亦儿-</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/qingrongirwin" target="_blank" rel="nofollow noopener">
+        <span>qingrongirwin</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Linux常用命令&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

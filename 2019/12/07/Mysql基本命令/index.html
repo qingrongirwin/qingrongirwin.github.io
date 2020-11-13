@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/facicon.png">
+  <link rel="icon" type="image/png" href="/img/facicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="irwinwu">
+  <meta name="keywords" content="">
+  <title>Mysql基本命令 - irwinwu</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>irwinwu</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/back2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2019-12-07 09:22">
+      2019年12月7日 上午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h4 id="一、MySQL基本命令"><a href="#一、MySQL基本命令" class="headerlink" title="一、MySQL基本命令"></a>一、MySQL基本命令</h4><p>登录数据库</p>
+<div class="hljs"><pre><code class="hljs mysql">mysql -u root -p</code></pre></div>
+
+<p>修改密码</p>
+<div class="hljs"><pre><code class="hljs mysql">mysqladmin -u用户名 -p旧密码 password 新密码</code></pre></div>
+
+
+
+<h4 id="二、MySQL–常用命令"><a href="#二、MySQL–常用命令" class="headerlink" title="二、MySQL–常用命令"></a>二、MySQL–常用命令</h4><h5 id="1、创建数据库（Create）"><a href="#1、创建数据库（Create）" class="headerlink" title="1、创建数据库（Create）"></a>1、创建数据库（Create）</h5><div class="hljs"><pre><code class="hljs mysql">create database db_name;  -- 创建数据库
+show databases;           -- 显示所有的数据库
+drop database db_name;    -- 删除数据库
+use db_name;              -- 选择数据库
+create table tb_name (字段名 varchar(20), 字段名 char(1));   -- 创建数据表模板
+show tables;              -- 显示数据表
+desc tb_name；            -- 显示表结构
+drop table tb_name；      -- 删除表
+    
+例如：
+
+&#x2F;*创建学生表*&#x2F;
+create table Student(
+     Sno char(10) primary key,
+     Sname char(20) unique,
+     Ssex char(2),
+     Sage smallint,
+     Sdept char(20)
+)；</code></pre></div>
+
+<h5 id="2、插入数据（Insert）"><a href="#2、插入数据（Insert）" class="headerlink" title="2、插入数据（Insert）"></a>2、插入数据（Insert）</h5><div class="hljs"><pre><code class="hljs mysql">&#x2F;*第一种形式无需指定要插入数据的列名，只需提供被插入的值即可：*&#x2F;
+insert into tb_name values (value1,value2,value3,...);
+&#x2F;*第二种形式需要指定列名及被插入的值：*&#x2F;
+insert into tb_name (column1,column2,column3,...) values (value1,value2,value3,...);</code></pre></div>
+
+<p>例如：</p>
+<div class="hljs"><pre><code class="hljs mysql">&#x2F;*插入数据*&#x2F;
+
+insert into Student values ( 20180001,张三,男,20,CS）;
+
+insert into Student values ( 20180002,李四,男,19,CS）;
+
+insert into Student (Sno,Sname,Ssex,Sage,Sdept) values ( 20191124,王五,男,18,MA）;
+
+insert into Student (Sno,Sname,Ssex,Sage,Sdept) values ( 20191123,赵六,男,20,IS）;</code></pre></div>
+
+
+
+<h5 id="3、查询数据-Select"><a href="#3、查询数据-Select" class="headerlink" title="3、查询数据(Select)"></a>3、查询数据(Select)</h5><p>基本select语句：<br>      一个基本的select语句可分解成三个部分：查找什么数据（select）、从哪里查找（from）、查找的条件是什么（where）。</p>
+<div class="hljs"><pre><code class="hljs mysql">select 语句的一般格式如下：
+               select &lt;目标列表达式列表&gt;
+               [into 新表名]
+               from 表名或视图名
+               [where &lt;条件&gt;]
+               [group by &lt;分组表达式&gt;]
+               [having &lt;条件&gt;]
+               [order by &lt;排序表达式&gt;[ASC|DESC]]</code></pre></div>
+
+
+
+<h6 id="一-查询指定的列"><a href="#一-查询指定的列" class="headerlink" title="(一)查询指定的列"></a>(一)查询指定的列</h6><p> 1⃣️查询表中所有列<br>在select语句指定列的位置上使用*号时，表示查询表的所有列。</p>
+<div class="hljs"><pre><code class="hljs mysql">select * from tb_name；</code></pre></div>
+
+<p>2⃣️查询表中指定的列<br>查询多列时，列名之间要用逗号隔开。</p>
+<div class="hljs"><pre><code class="hljs mysql">select tb_name.&lt;字符型字段&gt;,&lt;字符型字段&gt; ... from  tb_name;</code></pre></div>
+
+<p>3⃣️指定查询结果中的列标题<br>通过指定列标题（也叫列别名）可使输出结果更容易被人理解。<br>指定列标题时，可在列名之后使用AS子句；也可使用:列别名=&lt;表达式&gt;的形式指定列标题。<br>              AS子句的格式为：列名或计算表达式 [AS] 列标题</p>
+<div class="hljs"><pre><code class="hljs mysql">select &lt;字符型字段&gt; as 列标题1,&lt;字符型字段&gt; as 列标题2, &lt;字符型字段&gt; as 列标题3 from bt_name；</code></pre></div>
+
+<p> 4⃣️查询经过计算的列（即表达式的值）<br> 使用select对列进行查询时，不仅可以直接以列的原始值作为结果，而且还可以将列值进行计算后所得值作为查询结果，即select子句可以查询表达式的值,表达式可由列名、常量及算术运算符组成。<br>              查询结果计算列显示“无列名”,一般要给计算列加列标题。<br>              其中：表达式中可以使用的运算符有：加+、减-、乘*、除/、取余%</p>
+<div class="hljs"><pre><code class="hljs mysql">select &lt;字符型字段&gt;,&lt;字符型字段&gt;,列标题 &#x3D; &lt;字符型字段&gt; * n from tb_name；</code></pre></div>
+
+
+
+
+
+
+
+<h6 id="二-选择行：选择表中的部分行或全部行作为查询的结果"><a href="#二-选择行：选择表中的部分行或全部行作为查询的结果" class="headerlink" title="(二)选择行：选择表中的部分行或全部行作为查询的结果"></a>(二)选择行：选择表中的部分行或全部行作为查询的结果</h6><p>​       </p>
+<div class="hljs"><pre><code class="hljs mysql">select [all|distinct] [top n[percent]]&lt;目标列表达式列表&gt; from 表名</code></pre></div>
+
+<p>​    1⃣️消除查询结果中的重复行<br>​    对于关系数据库来说，表中的每一行都必须是不同的(即无重复行)。但当对表进行查询时若只选择其中的某些列，查询结果中就可能会出现重复行。<br>在select语句中使用distinct关键字可以消除结果集中的重复行,</p>
+<div class="hljs"><pre><code class="hljs mysql">select distinct &lt;字符型字段&gt;[,&lt;字符型字段&gt;,...] from tb_name；</code></pre></div>
+
+<p>​    2⃣️限制查询结果中的返回行数<br>  使用top选项可限制查询结果的返回行数，即返回指定个数的记录数。<br>  其中：n是一个正整数，表示返回查询结果集的前n行；若带percent关键字，则表示返回结果集的前n%行。<br>​              </p>
+<div class="hljs"><pre><code class="hljs mysql">select  top n from tb_name; &#x2F;*查询前 n 的数据*&#x2F;
+select top n percent from tb_name; &#x2F;*查询前 n% tb_name的数据*&#x2F;</code></pre></div>
+
+
+
+
+
+<h6 id="三-查询满足条件的行-用where子句实现条件查询"><a href="#三-查询满足条件的行-用where子句实现条件查询" class="headerlink" title="(三)查询满足条件的行: 用where子句实现条件查询"></a>(三)查询满足条件的行: 用where子句实现条件查询</h6><p>​            通过where子句实现,该子句必须紧跟在From子句之后。<br>​            格式为：</p>
+<div class="hljs"><pre><code class="hljs mysql">select [all|distinct] [top n[percent]]&lt;目标列表达式列表&gt; from 表名 where &lt;条件&gt;；</code></pre></div>
+
+<p>​            说明：在查询条件中可使用以下运算符或表达式：<br>​                  运算符                 运算符标识<br>​                  比较运算符         &lt;=，&lt;，=，&gt;，&gt;=，!=，&lt;&gt;，!&gt;，!&lt;<br>​                  范围运算符         between… and，not between… and<br>​                  列举运算符         in，not in<br>​                  模糊匹配运算符 like，not like<br>​                  空值运算符         is null，is not null<br>​                  逻辑运算符         and，or，not<br>​        1.使用比较运算符：</p>
+<div class="hljs"><pre><code class="hljs mysql">select * from tb_name where &lt;字符型字段&gt; &gt;&#x3D; n ；</code></pre></div>
+
+<p>​        2.指定范围：<br>​              用于指定范围的关键字有两个：between…and和 not between…and。</p>
+<div class="hljs"><pre><code class="hljs mysql">select * from tb_name where [not] between &lt;表达式1&gt; and &lt;表达式2&gt;;</code></pre></div>
+
+<p>​              其中：between关键字之后的是范围的下限（即低值）,and关键字之后的是范围的上限（即高值）<br>​              用于查找字段值在（或不在）指定范围的行。<br>​       3.使用列举:<br>​             使用in关键字可以指定一个值的集合，集合中列出所有可能的值，当表达式的值与集合中的任一元素个匹配时，即返回true，否则返回false。</p>
+<div class="hljs"><pre><code class="hljs mysql">select * from tb_name where &lt;字符型字段&gt; [not] in(值1,值2,...,值n);</code></pre></div>
+
+<p>​       4.使用通配符进行模糊查询:<br>​             可用like 子句进行字符串的模糊匹配查询，like子句将返回逻辑值（true或False）</p>
+<div class="hljs"><pre><code class="hljs mysql">select * from tb_name where &lt;字符型字段&gt; [not] like &lt;匹配串&gt;；</code></pre></div>
+
+<p>​             其含义是：查找指定字段值与匹配串相匹配的记录。匹配串中通常含有通配符%和_（下划线）。<br>​             其中:  %：代表任意长度（包括0）的字符串<br>​       5.使用null的查询<br>​             当需要判定一个表达式的值是否为空值时，使用 is null关键字。<br>​             当不使用not时，若表达式的值为空值，则返回true，否则返回false；当使用not时，结果刚好相反。</p>
+<div class="hljs"><pre><code class="hljs mysql">select * from tb_name where &lt;字符型字段&gt; is [not] null;</code></pre></div>
+
+<p>​        6.多重条件查询：使用逻辑运算符<br>​             逻辑运算符and（与：两个条件都要满足）和or（或：满足其中一个条件即可）可用来联接多个查询条件。and的优先级高于or,但若使用括号可以改变优先级。</p>
+<div class="hljs"><pre><code class="hljs mysql">select * from tb_name where &lt;字符型字段&gt; &#x3D; &#39;volues&#39; and &lt;字符型字段&gt; &gt; n;</code></pre></div>
+
+
+
+
+
+
+
+<h6 id="四-对查询结果排序"><a href="#四-对查询结果排序" class="headerlink" title="(四)对查询结果排序"></a>(四)对查询结果排序</h6><p>​        order by子句可用于对查询结果按照一个或多个字段的值（或表达式的值）进行升序（ASC）或降序（DESC）排列，默认为升序。<br>​       </p>
+<div class="hljs"><pre><code class="hljs mysql">order by &#123;排序表达式[ASC|DESC]&#125;[,...n]；</code></pre></div>
+
+<p>​        其中：排序表达式既可以是单个的一个字段，也可以是由字段、函数、常量等组成的表达式，或一个正整数。<br>​      </p>
+<div class="hljs"><pre><code class="hljs mysql">select * from tb_name order by &lt;排序表达式&gt; &lt;排序方法&gt;；</code></pre></div>
+
+
+
+
+
+
+
+<h6 id="五-使用统计函数-又称集函数，聚合函数"><a href="#五-使用统计函数-又称集函数，聚合函数" class="headerlink" title="(五)使用统计函数:又称集函数，聚合函数"></a>(五)使用统计函数:又称集函数，聚合函数</h6><p>​        在对表进行检索时，经常需要对结果进行计算或统计，T-SQL提供了一些统计函数（也称集函数或聚合函数），用来增强检索功能。统计函数用于计算表中的数据，即利用这些函数对一组数据进行计算，并返回单一的值。<br>​        常用统计函数表<br>​              函数名      功能<br>​              AVG         求平均值<br>​              count        求记录个数，返回int类型整数<br>​              max          求最大值<br>​              min           求最小值<br>​              sum          求和</p>
+<div class="hljs"><pre><code>1. SUM和AVG
+     功能：求指定的数值型表达式的和或平均值。</code></pre></div><p>​             </p>
+<div class="hljs"><pre><code><div class="hljs"><pre><code class="hljs mysql">select avg(&lt;字符型字段&gt;) as 平均数,sum(&lt;字符型字段&gt;) as 总数 from tb_name where &lt;字符型字段&gt; &#x3D;&#39;字符串&#39;;</code></pre></div></code></pre></div><p>​<br>​             </p>
+<div class="hljs"><pre><code>2. Max和Min
+     功能：求指定表达式的最大值或最小值。
+
+     <div class="hljs"><pre><code class="hljs mysql">select max(&lt;字符型字段&gt;) as 最大值,min(&lt;字符型字段&gt;) as 最小值 from tb_name;</code></pre></div></code></pre></div><p>​<br>​             </p>
+<div class="hljs"><pre><code>3. count
+     该函数有两种格式：count(*)和count([all]|[distinct] 字段名），为避免出错，查询记录个数一般使用count(*)，而查询某字段有几种取值用count(distinct 字段名）。
+     (1).count(*):
+         功能：统计记录总数。
+
+     <div class="hljs"><pre><code class="hljs mysql">select count(*) as 总数 from tb_name;</code></pre></div></code></pre></div>
+
+     (2).count([all]|[distinct] 字段名）
+         功能：统计指定字段值不为空的记录个数，字段的数据类型可以是text、image、ntext、uniqueidentifier之外的任何类型。
+
+     <div class="hljs"><pre><code class="hljs mysql">select count(&lt;字符型字段&gt;) as 总数 from tb_name;</code></pre></div><h6 id="六-对查询结果分组"><a href="#六-对查询结果分组" class="headerlink" title="(六)对查询结果分组"></a>(六)对查询结果分组</h6><p> group by子句用于将查询结果表按某一列或多列值进行分组，列值相等的为一组，每组统计出一个结果。该子句常与统计函数一起使用进行分组统计。<br>        group by 分组字段[,…n][having &lt;条件表达式&gt;]；<br>        1⃣️在使用group by子句后<br>             select列表中只能包含：group by子句中所指定的分组字段及统计函数。<br>        2⃣️having子句的用法<br>             having子句必须与group by 子句配合使用，用于对分组后的结果进行筛选（筛选条件中常含有统计函数）。</p>
+<p>​        3⃣️ 分组查询时不含统计函数的条件<br>​                通常使用where子句；含有统计函数的条件,则只能用having子句。</p>
+<div class="hljs"><pre><code class="hljs mysql">select &lt;字符型字段&gt;,count(*) as 列标题 from tb_name where &lt;字符型字段&gt;&#x3D;&#39;字符串&#39; group by &lt;字符型字段&gt;；</code></pre></div>
+
+<p>​        4⃣️修改数据(Update）</p>
+<p>​        Update 语句用于修改表中的数据。</p>
+<div class="hljs"><pre><code class="hljs mysql">update tb_name set 列名称 &#x3D; 新值 where 列名称 &#x3D; 某值；</code></pre></div>
+
+<p>​        5⃣️删除数据(Delete)</p>
+<p>​        删除单行</p>
+<div class="hljs"><pre><code class="hljs mysql">delete from tb_name where 列名称 &#x3D; 某值；</code></pre></div>
+
+<div class="hljs"><pre><code>删除所有行
+可以在不删除表的情况下删除所有的行。这意味着表的结构、属性和索引都是完整的：</code></pre></div><div class="hljs"><pre><code class="hljs mysql">delete * from tb_name   
+delete from tb_name；</code></pre></div>
+
+
+
+
+
+<h4 id="三、MySQL-–-alter命令"><a href="#三、MySQL-–-alter命令" class="headerlink" title="三、MySQL – alter命令"></a>三、MySQL – alter命令</h4><p> alter add命令用来增加表的字段。<br> alter add命令格式：alter table 表名 add字段 类型 其他;</p>
+<p> 例如，在表MyClass中添加了一个字段passtest，类型为int(4)，默认值为0</p>
+<div class="hljs"><pre><code class="hljs mysql">alter table MyClass add passtest int(4) default &#39;0&#39;;</code></pre></div>
+
+<p>添加两个字段  </p>
+<div class="hljs"><pre><code class="hljs mysql">mysql&gt; alter table Person add age int,add address varchar(11);</code></pre></div>
+
+<p> 删除两个字段</p>
+<div class="hljs"><pre><code class="hljs mysql">alter table Person drop column age,drop column address;</code></pre></div>
+
+<p> 修改字段的注释</p>
+<div class="hljs"><pre><code class="hljs mysql">alter table &#96;student&#96; modify column &#96;id&#96; comment &#39;学号&#39;;</code></pre></div>
+
+<p> 1) 加索引</p>
+<div class="hljs"><pre><code class="hljs mysql">alter table 表名 add index 索引名 (字段名1[，字段名2 …]);
+alter table employee add index emp_name (name);</code></pre></div>
+
+<p> 2) 加主关键字的索引</p>
+<div class="hljs"><pre><code class="hljs mysql">alter table 表名 add primary key (字段名);
+alter table employee add primary key(id);</code></pre></div>
+
+<p> 3) 加唯一限制条件的索引</p>
+<div class="hljs"><pre><code class="hljs mysql">alter table 表名 add unique 索引名 (字段名);
+alter table employee add unique emp_name2(cardnumber);</code></pre></div>
+
+<p> 4) 删除某个索引</p>
+<div class="hljs"><pre><code class="hljs mysql">alter table 表名 drop index 索引名;
+alter table employee drop index emp_name;</code></pre></div>
+
+<p> 5) 增加字段</p>
+<div class="hljs"><pre><code class="hljs mysql">ALTER TABLE table_name ADD field_name field_type;</code></pre></div>
+
+<p> 6) 修改原字段名称及类型</p>
+<div class="hljs"><pre><code class="hljs mysql">ALTER TABLE table_name CHANGE old_field_name new_field_name field_type;</code></pre></div>
+
+<p> 7) 删除字段</p>
+<div class="hljs"><pre><code class="hljs mysql">ALTER TABLE table_name DROP field_name;</code></pre></div>
+
+
+
+<h4 id="四、MySQL-–-应用"><a href="#四、MySQL-–-应用" class="headerlink" title="四、MySQL – 应用"></a>四、MySQL – 应用</h4><p>学生-课程数据库<br> 学生表：Student（<strong>Sno</strong>，Sname，Ssex，Sage，Sdept）<br> 课程表：Course（<strong>Cno</strong>，Cname，Cpno，Ccredit）<br> 学生选课表：SC（<strong>Sno</strong>，<strong>Cno</strong>，Grade）<br> 关系的主码加粗表示。各个表中的数据示例如图所示：</p>
+{%asset_img mysql.png Mysql %}
+
+<p> 建立一个“学生”表Student：</p>
+<div class="hljs"><pre><code class="hljs mysql">create table Student(
+  Sno char(9) peimary key, &#x2F;*列级完整性约束条件，Sno是主码*&#x2F;
+  Sname char(20) unique, &#x2F;* Sname取唯一值*&#x2F;
+  Ssex char(2),
+  Sage smallint,
+  Sdept char(20)
+);</code></pre></div>
+
+<p> 建立一个“课程”表Course：</p>
+<div class="hljs"><pre><code class="hljs mysql">create table Course(
+  Sno char(4) primary key, &#x2F;*列级完整性约束条件，Cname不能取空值*&#x2F;
+  Sname char(40) not null, &#x2F;*Cpno的含义是先修课*&#x2F;
+  Cpno char(4)
+  Ccredit smallint,
+  foreign key (Cpnoo) references Course(Cno) &#x2F;*表级完整性约束条件，Cpno是外码，被参照表是Course，被参照列是Cno</code></pre></div>
+
+<p>建立学生选课表SC：</p>
+<div class="hljs"><pre><code class="hljs mysql">create table SC(
+  Sno char(9),
+  Cno char(4),
+  Grade smallint,
+  frimary key (Sno,Cno), &#x2F;*主码由两个属性构成，必须作为表级完整性进行定义*&#x2F;
+  foreign key (Sno) references Student(Sno), &#x2F;*表级完整性约束条件，Sno是外码，被参照表是Student*&#x2F;
+  foreign key (Cno) references Course(Cno)   &#x2F;*表级完整性约束条件，Cno是外码，被参照表是Course *&#x2F;
+);</code></pre></div>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">面试准备</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Mysql/">Mysql</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">面试准备</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/08/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux常用命令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">
+                        <span class="hidden-mobile">计算机网络-网络安全</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "gGNPuwqksNOrbFtmaOTXrDii-gzGzoHsz",
+          app_key: "ec3fw1ASnmtTKB1gvhXbjR27",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    }
+    createObserver(loadValine, 'vcomments');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://weibo.com/572200176" target="_blank" rel="nofollow noopener"><span>-有一个男孩叫亦儿-</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/qingrongirwin" target="_blank" rel="nofollow noopener">
+        <span>qingrongirwin</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Mysql基本命令&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
